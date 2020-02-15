@@ -11,17 +11,23 @@ class Upload extends Component {
 			button: true
 		};
 	}
+	// adding files
 	handleChange(files) {
 		this.setState({
 			files: files,
 			button: false
 		});
 	}
+	// upload to analyze
+	upload() {
+		console.log(this.state.files[0])
+	}
+
 	render() {
 		return (
 			<div className="dropContainer">
 				<DropzoneArea onChange={this.handleChange.bind(this)} />
-				<Button disabled = {this.state.button}>Download</Button>
+				<Button disabled={this.state.button} onClick={this.upload.bind(this)}>Upload</Button>
 			</div>
 		);
 	}
