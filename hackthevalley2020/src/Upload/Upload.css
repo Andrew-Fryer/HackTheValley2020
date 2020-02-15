@@ -1,7 +1,8 @@
 .dropContainer {
-	width: 80%;
+	width: 60%;
 	align-content: center;
 	align-items: center;
 	justify-content: center;
 	margin: auto;
+	margin-top: 2%;
 }

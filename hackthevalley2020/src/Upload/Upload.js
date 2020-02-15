@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { DropzoneArea } from "material-ui-dropzone";
 import { Button } from "@material-ui/core";
-// import {FormData} from
-import axios from "axios";
+import FormData from 'form-data'
+// import axios from "axios";
 import "./Upload.css";
 
 class Upload extends Component {
@@ -45,12 +45,14 @@ class Upload extends Component {
 				console.error("Error:", error);
 			});
 		
-		console.log(this.state.files[0]);
+		// console.log(this.state.files[0]);
 	}
 
 	render() {
 		return (
 			<div className="dropContainer">
+				<br/>
+				<br/>
 				<DropzoneArea onChange={this.handleChange.bind(this)} />
 				<Button
 					disabled={this.state.button}
