@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { DropzoneArea } from "material-ui-dropzone";
 import { Button } from "@material-ui/core";
-// import {FormData} from
-// import axios from "axios";
+import FormData from 'form-data'
 import "./Upload.css";
 
 class Upload extends Component {
@@ -20,7 +19,7 @@ class Upload extends Component {
 			files: files,
 			selectedfile: files[0],
 			button: false
-		});
+		})
 	}
 	// upload to analyze
 	upload() {
@@ -28,14 +27,14 @@ class Upload extends Component {
 		data.append("file", this.state.selectedfile);
 		fetch("http://localhost:5000", {
 			method: "POST", // or 'PUT'
-			// headers: {
-			// 	// "Content-Type": "application/json"
+			headers: {
+				// "Content-Type": "application/json",
 
-			// 	"Access-Control-Allow-Origin": "*",
-			// 	"Access-Control-Allow-Methods":
-			// 		"GET,PUT,POST,DELETE,PATCH,OPTIONS"
-			// },
-			body: data,
+				// "Access-Control-Allow-Origin": "*",
+				// "Access-Control-Allow-Methods":
+				// 	"GET,PUT,POST,DELETE,PATCH,OPTIONS"
+			},
+			body: data
 		})
 			.then(response => response.json())
 			.then(data => {
@@ -45,13 +44,15 @@ class Upload extends Component {
 				console.error("Error:", error);
 			});
 		
-		console.log(this.state.files[0]);
+		// console.log(this.state.files[0]);
 	}
 
 	render() {
 		return (
 			<div className="dropContainer">
-				<DropzoneArea acceptedFiles={[]} onChange={this.handleChange.bind(this)} />
+				<br/>
+				<br/>
+				<DropzoneArea acceptedFiles={[]} onChange={this.handleChange.bind(this)} acceptedFiles={['image/jpeg', 'image/png', 'image/bmp', 'audio/mp3']}/>
 				<Button
 					disabled={this.state.button}
 					onClick={this.upload.bind(this)}
