@@ -16,7 +16,7 @@ crossfade.export("cross.wav", format="wav")
 crossfade = crossfade - 3 # reduce volume of music by 3dB
 
 # overlay speech and the music
-overlay = (crossfade.append(speech, crossfade = 20*1000)) 
+overlay = speech.overlay(crossfade)
 
 # play merged audio file
 play(overlay)
