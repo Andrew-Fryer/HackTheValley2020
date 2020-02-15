@@ -20,7 +20,7 @@ class Upload extends Component {
 			files: files,
 			selectedfile: files[0],
 			button: false
-		});
+		})
 	}
 	// upload to analyze
 	upload() {
@@ -28,14 +28,14 @@ class Upload extends Component {
 		data.append("file", this.state.selectedfile);
 		fetch("http://localhost:5000", {
 			method: "POST", // or 'PUT'
-			// headers: {
-			// 	// "Content-Type": "application/json"
+			headers: {
+				// "Content-Type": "application/json",
 
-			// 	"Access-Control-Allow-Origin": "*",
-			// 	"Access-Control-Allow-Methods":
-			// 		"GET,PUT,POST,DELETE,PATCH,OPTIONS"
-			// },
-			body: JSON.stringify(data)
+				// "Access-Control-Allow-Origin": "*",
+				// "Access-Control-Allow-Methods":
+				// 	"GET,PUT,POST,DELETE,PATCH,OPTIONS"
+			},
+			body: data
 		})
 			.then(response => response.json())
 			.then(data => {
@@ -53,7 +53,7 @@ class Upload extends Component {
 			<div className="dropContainer">
 				<br/>
 				<br/>
-				<DropzoneArea onChange={this.handleChange.bind(this)} />
+				<DropzoneArea onChange={this.handleChange.bind(this)} acceptedFiles={['image/jpeg', 'image/png', 'image/bmp', 'audio/mp3']}/>
 				<Button
 					disabled={this.state.button}
 					onClick={this.upload.bind(this)}
