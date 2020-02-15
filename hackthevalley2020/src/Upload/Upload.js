@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { DropzoneArea } from "material-ui-dropzone";
 import { Button } from "@material-ui/core";
 // import {FormData} from
-import axios from "axios";
+// import axios from "axios";
 import "./Upload.css";
 
 class Upload extends Component {
@@ -35,7 +35,7 @@ class Upload extends Component {
 			// 	"Access-Control-Allow-Methods":
 			// 		"GET,PUT,POST,DELETE,PATCH,OPTIONS"
 			// },
-			body: JSON.stringify(data)
+			body: data,
 		})
 			.then(response => response.json())
 			.then(data => {
@@ -51,7 +51,7 @@ class Upload extends Component {
 	render() {
 		return (
 			<div className="dropContainer">
-				<DropzoneArea onChange={this.handleChange.bind(this)} />
+				<DropzoneArea acceptedFiles={[]} onChange={this.handleChange.bind(this)} />
 				<Button
 					disabled={this.state.button}
 					onClick={this.upload.bind(this)}
