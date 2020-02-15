@@ -2,7 +2,7 @@ import requests, os
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
-@app.route('/',methods=['POST'])
+@app.route('/',methods=['POST', 'GET'])
 def hello_world():
     # file = request.files['file']
     # print(file)
@@ -43,4 +43,4 @@ def hello_world():
     return jsonify(obj)
 
 # run test:
-hello_world()
+#hello_world()
